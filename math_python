@@ -1,0 +1,22 @@
+from math import radians
+print(f'Output radian: {radians(int(input("Input degree: "))):=5}')
+
+---------------------------
+
+height, first_value, second_value = int(input('Height: ')), int(input('Base, first value: ')), int(input('Base, second value: '))
+print(f'Expected Output: {((first_value + second_value) / 2) * height}')
+
+--------------------------
+
+from math import tan, pi
+
+n, s = int(input('Input number of sides: ')), float(input('Input the length of a side: '))
+area = (1 / 4) * n * s ** 2 * (1 / tan(pi / n))
+
+print(f'The area of the polygon is: {int(area)}')
+
+
+----------------------------
+
+b, h = float(input('Length of base: ')), float(input('Height of parallelogram: '))
+print(f'Expected Output: {b * h}')
