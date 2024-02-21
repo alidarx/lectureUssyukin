@@ -1,0 +1,141 @@
+class Numbers:
+    def __init__(self, start):
+        self.start = start
+        
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        cont = self.start
+        self.start -= 1
+        
+        if cont >= 0:
+            return cont
+        else:
+            raise StopIteration
+        
+
+iter_obj = Numbers(10)
+iter_obj = iter(iter_obj)
+
+print([_ for _ in iter_obj])
+
+--------------------------------------
+
+class Numbers:
+    def __init__(self, end):
+        self.__end = end
+        
+    def __iter__(self):
+        self.num = 0
+        return self
+    
+    def __next__(self):
+        if self.num <= self.__end:            
+            cont = self.num
+            self.num += 1
+            return cont ** 2
+        else:
+            raise StopIteration
+    
+first_generator = Numbers(10)
+first_generator = iter(first_generator)
+
+for i in first_generator:
+	print(i) 
+        
+
+-----------------------------------
+
+class EvenNumbers:
+    def __init__(self, end):
+        self.end = end
+        
+    def __iter__(self):
+        self.counter = 0
+        return self
+    
+    def __next__(self):
+        if self.counter <= self.end:
+            out = self.counter
+            self.counter += 1
+
+            if out % 2 == 0: 
+                return out
+            else:
+                return self.__next__() 
+        else:
+            raise StopIteration
+    def size(self):
+        return self.end
+          
+    
+generator = EvenNumbers(11)
+generator = iter(generator)
+
+for index, obj in enumerate(generator):
+    if index != int(generator.size() / 2):
+        print(f'{obj}', end=", ")
+    else:
+        print(obj)
+
+---------------------------------------
+
+class DivBy4and3:
+    def __init__(self, end):
+        self.end = end
+    
+    def __iter__(self):
+        self.start = 0
+        return self
+    
+    def __next__(self):
+        cont = self.start
+        self.start += 12
+        
+        if cont <= self.end:
+            if cont % 12 == 0:
+                return cont
+        else:
+            raise StopIteration
+
+inter_obj = DivBy4and3(48)
+inter_obj = iter(inter_obj)
+
+for i in inter_obj:
+    print(i)
+
+
+-------------------------------------
+
+class Numbers:
+    def __init__(self, start = 0, end = 0):
+        self.__start = start
+        self.__end = end
+        
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        cont = self.__start
+        self.__start += 1
+        
+        if cont <= self.__end:
+            return cont
+        else:
+            raise StopIteration
+    
+    def squares(self) -> int:
+        generator = Numbers(self.__start, self.__end)
+        for number_of_generator in generator:
+            yield number_of_generator ** 200
+            
+test_gn = Numbers(0, 10)
+
+for i in test_gn.squares():
+    print(i)
+
+
+
+        -------------------------------------
+
