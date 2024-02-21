@@ -1,0 +1,61 @@
+import json
+
+file = open('db.json')
+db = json.load(file)
+
+-------------------------------
+
+
+import datetime
+
+time_now = datetime.datetime.now()
+minus_for_year, minus_for_month, minus_for_day = 0, 0, 5
+
+if time_now.day < 5:
+    minus_for_month = 1
+    minus_for_day = -26 
+if time_now.month == 1 and minus_for_month == 1:
+    minus_for_year = 1
+    minus_for_month = 11 - time_now.month
+ 
+print(datetime.datetime(
+    time_now.year - minus_for_year, time_now.month - minus_for_month, time_now.day - minus_for_day, 
+    time_now.hour, time_now.minute, time_now.second)
+)
+
+
+
+-----------------------------------
+
+from datetime import datetime as dt
+
+time_now = dt.now()
+print(f'yesterday: {time_now.day - 1}th {time_now.strftime("%B")}'
+      f'\ntoday: {time_now.day}th {time_now.strftime("%B")}'
+      f'\ntogether: {time_now.day + 1}th {time_now.strftime("%B")}')
+
+
+--------------------------------------
+
+from datetime import datetime as dt
+
+time_now = dt.now()
+print(str(time_now)[:-10])
+
+-------------------------------------
+
+import datetime
+
+newton_birthtime = datetime.datetime(1643, 1, 4, 15, 55, 4, 15432)
+time_now = datetime.datetime.now()
+
+time_difference = time_now - newton_birthtime
+dif_seconds = time_difference.total_seconds()
+
+print(dif_seconds)
+
+
+-----------------------------------
+
+
+
